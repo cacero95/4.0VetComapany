@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Enterate</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-tabs>
+
+            <ion-tab-bar slot="top">
+
+                <ion-tab-button (click)="ubicar('tips')">
+                    <ion-icon name="home"></ion-icon>
+                    <ion-label>Tips</ion-label>
+                </ion-tab-button>
+
+
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content>
+
+
+    <br><br>
+    <ion-label text-center>
+        <h2 text-center>Codigo Policial</h2>
+    </ion-label>
+
+    <ion-card *ngFor="let data of pets_data; let x = index">
+        <ion-card-header>
+            <ion-card-subtitle>{{x+1}}</ion-card-subtitle>
+            <ion-card-title>{{data.titulo}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="data.short">
+            {{data.short}}
+        </ion-card-content>
+        <ion-card-content *ngIf="!data.short">
+            {{data.descripcion}}
+        </ion-card-content>
+
+        <ion-card-content *ngIf="data.tipos">
+            <div *ngFor="let tipos_info of data.tipos">
+                <h2>{{tipos_info.titulo}}</h2>
+                <ul>
+                    <li *ngFor="let description of tipos_info.descripcion">
+                        {{description}}
+                    </li>
+                </ul>
+            </div>
+        </ion-card-content>
+
+        <div text-center>
+            <ion-button slot="end" color="primary" (click)="full_view(data)">
+                Ver completo
+            </ion-button>
+        </div>
+
+
+    </ion-card>
+
+
+
+
+</ion-content>

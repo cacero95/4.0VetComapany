@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Tips para tu mascota</ion-title>
+
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar animated (ionChange)="search($event)" placeholder="Filtrar información"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <ion-card *ngFor="let tip of tips | filtro:buscarTexto">
+        <ion-card-header>
+            <ion-card-subtitle>{{tip.titulo}}</ion-card-subtitle>
+            <ion-card-title>{{tip.titulo}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            {{tip.short}}
+        </ion-card-content>
+        <div text-center>
+            <ion-button slot="end" color="primary" (click)="completo(tip)">
+                Ver completo
+            </ion-button>
+        </div>
+
+
+    </ion-card>
+
+</ion-content>
