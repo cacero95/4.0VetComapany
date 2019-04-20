@@ -35,6 +35,10 @@
             {
               "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -135,6 +139,9 @@
     "cordova-plugin-x-socialsharing": {
       "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {},
@@ -208,6 +215,15 @@
       "clobbers": [
         "window.plugins.socialsharing"
       ]
+    },
+    {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open",
+        "window.open"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -220,6 +236,7 @@
     "cordova-plugin-telerik-imagepicker": "2.3.0",
     "cordova-sqlite-storage": "3.2.0",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-x-socialsharing": "5.4.4"
+    "cordova-plugin-x-socialsharing": "5.4.4",
+    "cordova-plugin-inappbrowser": "3.0.0"
   }
 }

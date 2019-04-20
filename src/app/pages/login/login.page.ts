@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
 
   email:string;
   password:string;
-
+  load:boolean = false;
   constructor(private dba:DbaService,
     private router:Router,
     private fireauth:AngularFireAuth,
@@ -45,17 +45,22 @@ export class LoginPage implements OnInit {
     
     const result = this.fireauth.auth.signInWithEmailAndPassword(this.email,this.password);
     try{
-      let data_user = {};
+      let data_user;
       if(result){
+        this.load = true;
         this.dba.login(this.email);
-        
         setTimeout(()=>{
           data_user = this.dba.getUsuario();
-          if (data_user == {}){
-            this.show_alert('Usuario','No encontrado');
+          console.log(data_user);
+          if (data_user.name){
+            this.load = false;
+            this.router.navigate(['/central/main']);
+            
           }
           else {
-            this.router.navigate(['/central/main']);
+            this.load = false;
+            this.show_alert('Usuario','No encontrado');
+            
           }
         },3000)
       }

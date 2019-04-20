@@ -35,7 +35,7 @@
             <ion-tab-bar slot="top">
                 <ion-tab-button (click)="ubicar('calendar')">
                     <ion-icon name="calendar"></ion-icon>
-                    <ion-label>Cronograma</ion-label>
+                    <ion-label>Eventos</ion-label>
                 </ion-tab-button>
                 <ion-tab-button (click)="ubicar('main')">
                     <ion-icon name="home"></ion-icon>
@@ -102,12 +102,12 @@
 
         </ion-item>
 
-        <img [src]="vet.url">
+        <img *ngIf="vet.url" [src]="vet.url">
 
         <ion-card-content>
             <h2>Podemos en encontrarla en {{vet.direccion}}</h2>
             <h3>contactar al correo {{vet.email}} </h3>
-            <h3> Servicios que ofrece </h3>
+            <h3>Servicios que ofrece </h3>
             <ul>
                 <li *ngFor="let servicios of vet.services">
                     {{servicios}}
@@ -125,7 +125,7 @@
 
 
     </ion-card>
-
+    <br>
     <ion-fab color="danger" vertical="bottom" horizontal="center" slot="fixed">
         <ion-fab-button (click)="add()">
             <ion-icon name="add"></ion-icon>

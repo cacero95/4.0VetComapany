@@ -25,30 +25,43 @@ export class GruposPage implements OnInit {
   busqueda:any = {};
   tweets:TwitterListData[] = [];
   team_busqueda:string;
-
+  load:boolean = false;
   
   constructor(private http:HttpClient,
     private modalCtrl:ModalController) {
+    
+    
+      
+  }
+
+  async ngOnInit() {
     
     this.busqueda = {
       tema:'@Muy_mascotas',
       type:'normal'
     }
-    
-     
-    this.http.post('https://vetcompany.herokuapp.com/twitter',this.busqueda)
-    .subscribe((data:any)=>{
-      this.tweets = data.cuerpo.users;
-      console.log(this.tweets);
-      // this.tweets = data.cuerpo.statuses;
-       
-    });
-      
+    this.load = true;
+    let tweets:any = await this.cargar_tweets();
+    console.log(tweets);
+    if(tweets.users){
+      this.tweets = tweets.users;
+      this.load = false;
+    }
+    else {
+      console.log(JSON.stringify(tweets));
+      this.load = false;
+    }
   }
-
-  ngOnInit() {
+  async cargar_tweets(){
+    return new Promise((resolve,reject)=>{
+      this.http.post('https://vetcompany.herokuapp.com/twitter',this.busqueda)
+      .subscribe((data:any)=>{
+        resolve(data.cuerpo);
+      },err=>{
+        reject(err)
+      })
+    })
   }
-
   segmentChanged(event){
     this.team_busqueda = event.target.value;
     console.log(this.team_busqueda);

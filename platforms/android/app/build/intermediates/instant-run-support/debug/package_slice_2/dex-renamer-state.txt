@@ -1,0 +1,4 @@
+#Fri Apr 19 17:01:58 COT 2019
+base.0=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/155
+path.0=classes.dex
+renamed.0=classes.dex

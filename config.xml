@@ -85,5 +85,6 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="2.3.0" />
     <plugin name="cordova-sqlite-storage" spec="3.2.0" />
     <plugin name="cordova-plugin-x-socialsharing" spec="5.4.4" />
+    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <engine name="android" spec="7.1.4" />
 </widget>

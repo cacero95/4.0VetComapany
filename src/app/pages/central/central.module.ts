@@ -18,6 +18,10 @@ const routes: Routes = [
         loadChildren: '../main/main.module#MainPageModule'
       },
       {
+        path:'grupos',
+        loadChildren: '../grupos/grupos.module#GruposPageModule'
+      },
+      {
         path:'calendar',
         loadChildren:'../vet_services/calendar/calendar.module#CalendarPageModule'
       },

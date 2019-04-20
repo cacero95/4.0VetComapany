@@ -17,8 +17,8 @@ export class AppComponent {
 
   public appMenu = [
     
-    {title: 'login', url: '/login', icon: 'md-contact'},
-    {title: 'registrarse', url:'/register', icon:'md-arrow-round-up'}
+    {title: 'Entrar', url: '/login', icon: 'md-contact'},
+    {title: 'Registrarse', url:'/register', icon:'md-arrow-round-up'}
   
   ]
   constructor(

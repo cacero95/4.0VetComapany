@@ -80,6 +80,12 @@ export class MainPage implements OnInit {
   async whats_shared(imagen:string){
     console.log(imagen);
     this.social.shareViaWhatsApp('publicando desde ionic',imagen,this.url);
+    this.social.shareViaWhatsApp('Esta es mi mascota',imagen,this.url)
+    .then((data)=>{
+      console.log(data);
+    }).catch(err=>{
+      console.log(err);
+    })
 
   }
   async shared(imagen:string){

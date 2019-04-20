@@ -97,20 +97,20 @@ export class DbaService {
     return usuario_log;
   }
 
-  registrar_vet(vet:Veterinaria){
-
+  async registrar_vet(vet:Veterinaria){
+    
     this.key = vet.email
         this.key = this.key.replace("@","_");
         while(this.key.indexOf(".") != -1){
           this.key = this.key.replace(".","_");
         }
     
+    return new Promise((resolve,reject)=>{
     if(vet.url){
       /**
        * solo si el usuario tiene una imagen que
        * subir al storage
        */
-      let promise  = new Promise((resolve,reject)=>{
         /**
          * Hacemos referencia al storage de firebase
          */
@@ -126,91 +126,144 @@ export class DbaService {
         },
         (err)=>{
           // an error happen
-          reject();
+          console.log(JSON.stringify(err));
+          
         },
         ()=>{
           // success
           /**
               * descargo el url segun el storage de google para guardarselo en la 
               * data base
-          */
+              */
           fireStorage.child(`img/${file_name}`).getDownloadURL().then(direccion=>{
             vet.url = direccion;
-            this.fireDba.object(`${this.key}`).update(vet);
-            this.fireDba.object(`veterinarias/${this.key}`).update(vet);
+          });
+          // intento subir el usuario a la dba
+          this.fireDba.object(`${this.key}`).update(vet)
+          .then(()=>{
             this.setUsuario(vet);
+            resolve(true);
+          }).catch(err=>{
+            if(err){
+              
+              console.log(JSON.stringify(err));
+              reject(false);
+            }
+          })
+          this.fireDba.object(`veterinarias/${this.key}`).update(vet)
+          .catch(err=>{
+            if(err){
+              console.log(JSON.stringify(err));
+              reject(false);
+            }
           })
         }
-        )
-      })  
-      
-    }
-    else{
-      this.fireDba.object(`${this.key}`).update(vet);
-      this.fireDba.object(`veterinarias/${this.key}`).update(vet);
-      this.setUsuario(vet); 
-    }
+        );
+        
+      }
+      else{
+        this.fireDba.object(`${this.key}`).update(vet)
+        .then(()=>{
+          
+          this.setUsuario(vet);
+          resolve(true);
+        
+        }).catch(err=>{
+          
+          if(err){
+            console.log(JSON.stringify(err));
+            reject(false);
+          }
+
+        });
+        this.fireDba.object(`veterinarias/${this.key}`).update(vet)
+        .catch(err=>{
+          console.log(JSON.stringify(err));
+          reject(false);
+        });
+      }
+
+    });
+    
     
   }
-  registrar_user(usuario:User,is_image){
-    let key = usuario.email
-        key = key.replace("@","_");
-        while(key.indexOf(".") != -1){
-          key = key.replace(".","_");
+
+
+
+  async registrar_user(usuario:User,is_image){
+    let respuesta:boolean = false;
+    let contador:number = 0;
+    this.key = usuario.email
+        this.key = this.key.replace("@","_");
+        while(this.key.indexOf(".") != -1){
+          this.key = this.key.replace(".","_");
         }
 
-    // console.log(is_image);
+    
+    return new Promise ((resolve,reject)=>{
+
     if (is_image){
-     let promesa = new Promise ((resolve,reject)=>{
+
        // recorro el arreglo de mascotas que puede tener el usuario
-       for (let x=0; x < usuario.mascotas.length; x++){
-        let fireStorage = firebase.storage().ref(); // hacemos la referencia al storage en firebase
-        let file_name = new Date().valueOf().toString();
-        fireStorage.child(`img/${file_name}`)
-        
-        let upload_task: firebase.storage.UploadTask =
-          fireStorage.child(`img/${file_name}`)
-          .putString(usuario.mascotas[x].url, 'base64', {contentType: 'image/jpeg'}); // mando el url de la imagen
-          upload_task.on( firebase.storage.TaskEvent.STATE_CHANGED,
-          ()=>{
+       for (let mascota of usuario.mascotas){
+        // recorro el arreglo de mascotas para ver si tienen imagen
+        if (mascota.url){
 
-          },
-          (err)=>{
-            reject();
-          },
-          ()=>{ // exito
-            
-            
-            fireStorage.child(`img/${file_name}`).getDownloadURL().then((direction)=>{
-              console.log('el url es ' + direction);
-              usuario.mascotas[x].url = direction;
-              
-              
-              this.fireDba.object(`${this.key}/`).update(usuario);
-
-              this.setUsuario(usuario);
+          let fireStorage = firebase.storage().ref(); // hacemos referencia al storage de firebase
+          let file_name = new Date().valueOf().toString();
+          fireStorage.child(`img/${file_name}`);
+          let upload_task:firebase.storage.UploadTask = fireStorage.child(`img/${file_name}`)
+          .putString(mascota.url,'base64',{contentType:'image/jpeg'});
+          upload_task.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            ()=>{
+              // PROCCESS
+            },
+            (err)=>{
+              console.log(JSON.stringify(err));
+            },
+            ()=>{
+              // success
+              fireStorage.child(`img/${file_name}`).getDownloadURL().then((address)=>{
+                 // agrego el url de firebase
+                console.log(address);
+                usuario.mascotas[contador].url = address;
+              })
             })
-
-            
-            
-            //upload_task.snapshot.ref.getDownloadURL().then((downloadURL)=> {
-              //console.log('File available at', downloadURL);
-              
-            //});
-            
           }
-          );
+        
         }
-        resolve();
+        
+        
+        this.fireDba.object(`${this.key}/`).update(usuario).then(()=>{
+          resolve(true);
+          
+        }).catch(err=>{
+          if(err){
+            
+            console.log(JSON.stringify(err))
+            reject(false);
+           
+          }
+        })
         // aca subire los registros a firebase
         // despues de subir las imagenes al storage
+        
+      }
+      else{
+        this.fireDba.object(`${this.key}/`).update(usuario).then(()=>{
+          this.setUsuario(usuario);
+          resolve(true)
+        }).catch(err=>{
+          if(err){
+            console.log(JSON.stringify(err));
+             
+            reject(false);
+          }
+        })
+        
+      }
+    });
        
-     })
-    }
-    else{
-      this.fireDba.object(`${this.key}/`).update(usuario);
-      this.setUsuario(usuario);
-    }
   }
   //
   //cargar_firebase(user){
@@ -361,6 +414,7 @@ export class DbaService {
      */
     
   }
+  
 
   
 }

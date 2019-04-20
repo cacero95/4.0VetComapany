@@ -357,21 +357,6 @@
             ]
         },
         {
-            "outputFile": "/home/cacero95/Documents/Tesis/project/pruebas/vetcompany_03-4.2.0/platforms/android/app/build/intermediates/res/merged/debug/values-v13_values-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/cacero95/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/f6e8dfddd83d1fb43abdc8a8b1b2427c/res/values-v13/values-v13.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "58",
-                        "endOffsets": "109"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/cacero95/Documents/Tesis/project/pruebas/vetcompany_03-4.2.0/platforms/android/app/build/intermediates/res/merged/debug/values-bn-rBD_values-bn-rBD.arsc.flat",
             "map": [
                 {
@@ -382,6 +367,21 @@
                         "startOffsets": "55,164,272,395,507,613,707,812,942,1020,1098,1185,1295,1411,1518,1628,1734,1844,1969,2074",
                         "endColumns": "108,107,122,111,105,93,104,129,77,77,86,109,115,106,109,105,109,124,104,100",
                         "endOffsets": "159,267,390,502,608,702,807,937,1015,1093,1180,1290,1406,1513,1623,1729,1839,1964,2069,2170"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/cacero95/Documents/Tesis/project/pruebas/vetcompany_03-4.2.0/platforms/android/app/build/intermediates/res/merged/debug/values-v13_values-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/cacero95/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/f6e8dfddd83d1fb43abdc8a8b1b2427c/res/values-v13/values-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
                     }
                 }
             ]
@@ -502,6 +502,21 @@
             ]
         },
         {
+            "outputFile": "/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/res/merged/debug/values-lv_values-lv.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/cacero95/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/f6e8dfddd83d1fb43abdc8a8b1b2427c/res/values-lv/values-lv.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,175,283,406,514,623,709,813,935,1017,1099,1184,1293,1405,1504,1615,1724,1829,1948,2047",
+                        "endColumns": "119,107,122,107,108,85,103,121,81,81,84,108,111,98,110,108,104,118,98,100",
+                        "endOffsets": "170,278,401,509,618,704,808,930,1012,1094,1179,1288,1400,1499,1610,1719,1824,1943,2042,2143"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/res/merged/debug/values-hu_values-hu.arsc.flat",
             "map": [
                 {
@@ -536,21 +551,6 @@
                         "startOffsets": "2071,2182,2267,2328",
                         "endColumns": "110,84,60,95",
                         "endOffsets": "2177,2262,2323,2419"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/res/merged/debug/values-lv_values-lv.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/cacero95/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/f6e8dfddd83d1fb43abdc8a8b1b2427c/res/values-lv/values-lv.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,175,283,406,514,623,709,813,935,1017,1099,1184,1293,1405,1504,1615,1724,1829,1948,2047",
-                        "endColumns": "119,107,122,107,108,85,103,121,81,81,84,108,111,98,110,108,104,118,98,100",
-                        "endOffsets": "170,278,401,509,618,704,808,930,1012,1094,1179,1288,1400,1499,1610,1719,1824,1943,2042,2143"
                     }
                 }
             ]
@@ -814,21 +814,6 @@
             ]
         },
         {
-            "outputFile": "/home/cacero95/Documents/Tesis/project/pruebas/vetcompany_03-4.2.0/platforms/android/app/build/intermediates/res/merged/debug/values-zh-rTW_values-zh-rTW.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/cacero95/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/f6e8dfddd83d1fb43abdc8a8b1b2427c/res/values-zh-rTW/values-zh-rTW.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,150,257,380,473,573,655,752,860,936,1012,1090,1186,1282,1377,1474,1569,1669,1782,1876",
-                        "endColumns": "94,106,122,92,99,81,96,107,75,75,77,95,95,94,96,94,99,112,93,100",
-                        "endOffsets": "145,252,375,468,568,650,747,855,931,1007,1085,1181,1277,1372,1469,1564,1664,1777,1871,1972"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/res/merged/debug/values-si-rLK_values-si-rLK.arsc.flat",
             "map": [
                 {
@@ -839,6 +824,21 @@
                         "startOffsets": "55,165,273,396,503,610,698,803,919,1008,1095,1179,1288,1393,1491,1601,1700,1806,1927,2026",
                         "endColumns": "109,107,122,106,106,87,104,115,88,86,83,108,104,97,109,98,105,120,98,100",
                         "endOffsets": "160,268,391,498,605,693,798,914,1003,1090,1174,1283,1388,1486,1596,1695,1801,1922,2021,2122"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/cacero95/Documents/Tesis/project/pruebas/vetcompany_03-4.2.0/platforms/android/app/build/intermediates/res/merged/debug/values-zh-rTW_values-zh-rTW.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/cacero95/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.4.0.aar/f6e8dfddd83d1fb43abdc8a8b1b2427c/res/values-zh-rTW/values-zh-rTW.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,150,257,380,473,573,655,752,860,936,1012,1090,1186,1282,1377,1474,1569,1669,1782,1876",
+                        "endColumns": "94,106,122,92,99,81,96,107,75,75,77,95,95,94,96,94,99,112,93,100",
+                        "endOffsets": "145,252,375,468,568,650,747,855,931,1007,1085,1181,1277,1372,1469,1564,1664,1777,1871,1972"
                     }
                 }
             ]

@@ -15,10 +15,13 @@ export class CentralPage implements OnInit {
   public menu = [
     
     {title: 'Consejos', url: '/tips', icon: 'information-circle-outline'},
+    {title: 'Grupos', url: '/grupos',icon:'chatbubbles'},
     {title: 'Enterate', url:'/pet-info', icon:'help'},
     {title: 'calendario', url:'/central/calendar', icon:'calendar'},
     {title: 'usuarios',url:'/central/users',icon:'people'},
     {title: 'cuenta', url:'/central/user',icon:'md-contact'}
+    
+    
   
   ]
   selectedPath = '';

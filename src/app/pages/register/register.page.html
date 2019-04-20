@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="type=='institute'">
+<ion-content *ngIf="type=='institute' && !load">
     <ion-item>
         <ion-label position="floating">Nombre</ion-label>
         <ion-input [(ngModel)]="vet.name" type="text"></ion-input>
@@ -47,10 +47,10 @@
         </ion-list>
     </ion-item>
 
-
+    <br>
     <ion-button (click)="ingresar()" expand="full">Ingresar</ion-button>
 </ion-content>
-<ion-content *ngIf="type=='mascota'">
+<ion-content *ngIf="type=='mascota' && !load">
 
     <ion-item>
         <ion-label position="floating">Nombre</ion-label>
@@ -70,17 +70,29 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating">Telefono</ion-label>
-        <ion-input type="password" [(ngModel)]="user.telefono"></ion-input>
+        <ion-input type="number" [(ngModel)]="user.telefono"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label position="floating">Dirección</ion-label>
-        <ion-input type="password" [(ngModel)]="user.direccion"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.direccion"></ion-input>
     </ion-item>
     <br>
     <ion-item>
         <ion-label>Tienes mascotas?</ion-label>
-        <ion-checkbox (ionChange)="mascotas()"></ion-checkbox>
+        <ion-checkbox (ionChange)="numero_mascotas()"></ion-checkbox>
     </ion-item>
+    <br>
     <ion-button (click)="agregar_user()" expand="full">Registrar</ion-button>
 
+</ion-content>
+<ion-content *ngIf="load">
+    <div vertical="center" text-center *ngIf="load">
+        <h3> Cargando... </h3>
+        <ion-row>
+
+            <ion-col>
+                <i color="primary" class="fa fa-sync fa-spin fa-5x"></i>
+            </ion-col>
+        </ion-row>
+    </div>
 </ion-content>

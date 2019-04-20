@@ -1,4 +1,19 @@
-#Tue Apr 16 21:23:32 COT 2019
-base.0=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Fri Apr 19 17:02:01 COT 2019
+path.1=classes.dex
 path.0=classes.dex
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.5=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/169
+base.4=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/166
+base.3=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/168
+base.2=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/165
+base.1=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/167
+base.0=/home/cacero95/Documents/Tesis/project/04.vetcompany/platforms/android/app/build/intermediates/transforms/dexMerger/debug/164
+path.5=classes.dex
+path.4=classes.dex
+path.3=classes.dex
+path.2=classes.dex

@@ -69,6 +69,15 @@ module.exports = [
     "clobbers": [
       "window.plugins.socialsharing"
     ]
+  },
+  {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -83,7 +92,8 @@ module.exports.metadata =
   "cordova-plugin-telerik-imagepicker": "2.3.0",
   "cordova-sqlite-storage": "3.2.0",
   "es6-promise-plugin": "4.2.2",
-  "cordova-plugin-x-socialsharing": "5.4.4"
+  "cordova-plugin-x-socialsharing": "5.4.4",
+  "cordova-plugin-inappbrowser": "3.0.0"
 };
 // BOTTOM OF METADATA
 });

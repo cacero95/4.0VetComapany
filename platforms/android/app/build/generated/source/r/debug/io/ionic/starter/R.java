@@ -1801,11 +1801,14 @@ public final class R {
     public static final int ic_action_discard_light=0x7f06004d;
     public static final int ic_action_done_dark=0x7f06004e;
     public static final int ic_action_done_light=0x7f06004f;
-    public static final int ic_launcher=0x7f060050;
-    public static final int image_bg=0x7f060051;
-    public static final int loading_icon=0x7f060052;
-    public static final int notification_template_icon_bg=0x7f060053;
-    public static final int screen=0x7f060054;
+    public static final int ic_action_next_item=0x7f060050;
+    public static final int ic_action_previous_item=0x7f060051;
+    public static final int ic_action_remove=0x7f060052;
+    public static final int ic_launcher=0x7f060053;
+    public static final int image_bg=0x7f060054;
+    public static final int loading_icon=0x7f060055;
+    public static final int notification_template_icon_bg=0x7f060056;
+    public static final int screen=0x7f060057;
   }
   public static final class id {
     public static final int action0=0x7f070000;

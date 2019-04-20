@@ -26,7 +26,7 @@ export class RegisterPage implements OnInit {
   password:string;
   count:number;
   pets:Mascota[] = [];
-
+  load:boolean = false;
   is_image:boolean;
 
   constructor(private dba:DbaService,
@@ -87,22 +87,22 @@ export class RegisterPage implements OnInit {
     
     let alert = await this.alertCtrl.create({
       animated:true,
-      header: 'Quiere agregar su imagen',
+      header: 'Quieres agregar una imagen',
       buttons:[
         {
           text:'Si',
           role: 'Confirmar',
           handler:()=>{
-            this.is_image = true;
-            this.agregar_user()
+            
+            this.agregar_vet(true)
           }
         },
         {
           text:'No',
           role:'cancelar',
           handler:()=>{
-            this.is_image = false;
-            this.agregar_user()
+            
+            this.agregar_vet(false)
           }
         }
       ]
@@ -112,17 +112,11 @@ export class RegisterPage implements OnInit {
   /**
    * Permite seleccionar una imagen del celular
    */
-  mascotas(){
-     
-      this.numero_mascotas('Cuantas', 'Mascotas tienes?');
-      
-    
-    
-  }
+  
   async numero_mascotas( titulo:string, mensaje:string ){
     const alert = await this.alertCtrl.create({
-      header:titulo,
-      subHeader:mensaje,
+      header:'Cuenatas',
+      subHeader:'Mascotas tienes?',
       inputs:[
         {
           name: 'n_mascotas',
@@ -179,45 +173,26 @@ export class RegisterPage implements OnInit {
     
   }
 
-  async agregar_user(){
-    if (!this.is_image){
-      if(this.type == 'mascota'){
-        try{
-          let result = await this.fireAuth.auth
-          .createUserWithEmailAndPassword(this.user.email,this.password)
-          if (result){
-
-            this.dba.registrar_user(this.user,false);
-            this.router.navigate(['/central/main']);
-
-
-          }
+  async mensaje(titulo,mensaje){
+    let alert = await this.alertCtrl.create({
+      header:titulo,
+      message:mensaje,
+      buttons:[
+        {
+          text:'ok',
+          role:'ok'
+          
         }
-        catch(err){
-          console.log(JSON.stringify(err));
-        }
-      }
-      else {
-        this.vet.type = this.type;
-        this.vet.services = this.servicios;
-        
-        try{
-          let result = await this.fireAuth.auth
-          .createUserWithEmailAndPassword(this.vet.email,this.password)
-          if (result){
-            this.dba.registrar_vet(this.vet);
-            this.router.navigate(['/central/main']);
+      ]
+    });
+    alert.present();
+  }
 
-
-          }
-        }
-        catch(err){
-          console.log(JSON.stringify(err));
-        }
-
-      }
-    }
-    else {
+  async agregar_vet(imagen){
+    console.log(imagen);
+    this.vet.services = this.servicios;
+    this.vet.type = this.type;
+    if (imagen){
       let options:ImagePickerOptions = {
         quality: 70,
         outputType: 1, // indica que la imagen va ser en base 64bits
@@ -227,54 +202,72 @@ export class RegisterPage implements OnInit {
         for (let x = 0; x < img.length; x++){
           this.image64 = img[x];
         }
-      },(err)=>console.log(JSON.stringify(err)));
-      
-      if (this.type == 'mascota'){
-
-        // hay que crear el modal para crear el user
-        try{
-          let result = await this.fireAuth.auth
-          .createUserWithEmailAndPassword(this.user.email,this.password);
-          if(result){
-            this.dba.registrar_user(this.user,true);
-            this.router.navigate(['/center/main']);
-          }
-        }
-        catch(err){
-          console.log(JSON.stringify(err));
-        }
-      }
-      else{
-        /**
-         * se registran los datos del usuario tipo 
-         * institute
-         */
-        this.vet.services = this.servicios;
         this.vet.url = this.image64;
-        this.vet.type = this.type;
-        try{
-          let result = await this.fireAuth.auth
-          .createUserWithEmailAndPassword(this.vet.email,this.password)
-          if (result){
-            // this.dba.cargar_user(this.vet);
-            this.dba.registrar_vet(this.vet);
-            this.router.navigate(['/central/main']);
-          }
-        }
-        catch(err){
-          console.log(JSON.stringify(err));
-        }
-        
-  
-      }
-      
-
+      },(err)=>console.log(JSON.stringify(err)));
 
     }
+    else {
+      try{
+        let result = await this.fireAuth.auth
+        .createUserWithEmailAndPassword(this.vet.email,this.password);
+        if(result){
+          this.load = true;
+          let respuesta = await this.dba.registrar_vet(this.vet);
+          console.log('la respuesta:',respuesta);
+          if (!respuesta){
+            this.load = false;
+            this.mensaje('error',':( no se puso subir el usuario');
+          }
+          else {
+            console.log('se registro con exito');
+            
+            this.router.navigate(['/central/main']);
+            
+          }
+        }
+      }
+      catch(err){
+        console.log(err);
+        console.log(JSON.stringify(err));
+        this.mensaje(':(', err.mensaje);
+      }
+    }
+
     
+  }
+/**
+ * permite agregar el usuario de tipo mascota a la dba
+ */
 
+  async agregar_user(){
+    
+    try{
+      this.user.type = this.type;
+      let result = await this.fireAuth.auth
+      .createUserWithEmailAndPassword(this.user.email,this.password)
+      if (result){
+        this.load = true;
+        let respuesta = await this.dba.registrar_user(this.user,this.is_image);
+        console.log('la respuesta:',respuesta);
+        if (!respuesta){
+          this.mensaje('error',':( no se puso subir el usuario');
+          this.load = false;
+        }
+        else {
+          console.log('se registro con exito')
+          this.router.navigate(['/central/main']);
+          
+        }
+                                
 
-
+      }
+    }
+    catch(err){
+      console.log(err);
+      console.log(JSON.stringify(err));
+      this.mensaje(':(', err.mensaje);
+    }
+    
   }
   
 

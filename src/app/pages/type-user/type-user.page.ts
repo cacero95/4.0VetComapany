@@ -13,7 +13,9 @@ export class TypeUserPage implements OnInit {
     
     
    }
-
+  cerrar(){
+    this.modalCtrl.dismiss();
+  }
   ngOnInit() {
   }
   ingresar(type:string){

@@ -16,6 +16,7 @@ import { TypeUserPage } from './pages/type-user/type-user.page';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 // firebase
 import { AngularFireModule } from '@angular/fire';
@@ -23,6 +24,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FullViewPage } from './pages/full-view/full-view.page';
 import { TwitterGroupPage } from './pages/grupos/twitter-group/twitter-group.page';
+import { ShowVeterinariaPage } from './pages/user_services/veterinarias/show-veterinaria/show-veterinaria.page';
+import { MascotaPage } from './pages/mascota/mascota.page';
 
 
 // firebase credentials
@@ -38,8 +41,8 @@ export const firebaseConfig = {
 
 
 @NgModule({
-  declarations: [AppComponent,TypeUserPage,FullViewPage,TwitterGroupPage],
-  entryComponents: [TypeUserPage,FullViewPage,TwitterGroupPage],
+  declarations: [AppComponent,TypeUserPage,FullViewPage,TwitterGroupPage,ShowVeterinariaPage,MascotaPage],
+  entryComponents: [TypeUserPage,FullViewPage,TwitterGroupPage,ShowVeterinariaPage,MascotaPage],
   imports: [BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -53,6 +56,7 @@ export const firebaseConfig = {
     SplashScreen,
     ImagePicker,
     SocialSharing,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

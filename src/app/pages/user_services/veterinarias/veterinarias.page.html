@@ -1,43 +1,75 @@
 <ion-header>
     <ion-toolbar color="tertiary">
-        <ion-buttons>
-            <ion-back-button defaultHref="/" (click)="cerrar()"></ion-back-button>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
-        <ion-title>{{entidad.name}}</ion-title>
+        <ion-title>veterinarias</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar animated (ionChange)="buscar($event)" placeholder="Busca tu institución..."></ion-searchbar>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-segment color="tertiary" (ionChange)="change($event)">
+            <ion-segment-button value="Todas">
+                <ion-label>Todas</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Mias">
+                <ion-label>Mias</ion-label>
+            </ion-segment-button>
+        </ion-segment>
     </ion-toolbar>
 </ion-header>
-
 <ion-content>
-    <ion-card>
-        <img [src]="entidad.url" />
-        <ion-card-header>
-            <ion-card-subtitle>{{entidad.direccion}}</ion-card-subtitle>
-            <ion-card-title>{{entidad.name}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <p>Numero contacto {{entidad.telefono}} </p>
-            <p>Maneja servicios como:</p>
-            <ul>
-                <li *ngFor="let servicio of entidad.services">
-                    {{servicio}}
-                </li>
-            </ul>
 
-            <ion-row>
-                <ion-col *ngIf="is_transporte" text-right>
-                    <ion-button (click)="pedir_transporte()" text-right size="small" fill="clear" color="primary">
-                        pedir transporte
-                        <ion-icon slot="end" name="call"></ion-icon>
+    <ion-list *ngIf="opcion == 'Todas'">
 
-                    </ion-button>
-                </ion-col>
-            </ion-row>
 
-        </ion-card-content>
-    </ion-card>
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button (click)="add_event()">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
+
+        <ion-item *ngFor="let entidad of entidades | vet:filtrar">
+
+            <ion-card>
+                <img [src]="entidad.url" />
+                <ion-card-header>
+                    <ion-card-subtitle>{{entidad.direccion}}</ion-card-subtitle>
+                    <ion-card-title>{{entidad.name}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ul>
+                        <li *ngFor="let servicio of entidad.services">
+                            {{servicio}}
+                        </li>
+                    </ul>
+
+                    <ion-button (click)="registrarse(entidad)" expand="full">Registrarse</ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+
+    </ion-list>
+    <ion-list *ngIf="opcion == 'Mias'">
+
+
+
+        <ion-item *ngFor="let entidad of mis_entidades | vet:filtrar">
+
+            <ion-card>
+                <img [src]="entidad.url" />
+                <ion-card-header>
+                    <ion-card-subtitle>{{entidad.direccion}}</ion-card-subtitle>
+                    <ion-card-title>{{entidad.name}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ul>
+                        <li *ngFor="let servicio of entidad.services">
+                            {{servicio}}
+                        </li>
+                    </ul>
+
+                    <ion-button (click)="ver(entidad)" expand="full">Ver</ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+
+    </ion-list>
+
 </ion-content>
